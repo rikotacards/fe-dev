@@ -1,25 +1,29 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import "./App.css";
+
+import { Context } from "./Context";
+import { MainPage } from "./Pages/Main";
+import { ThemeProvider } from "@mui/material/styles";
+import { AppBar, CssBaseline, Toolbar, Typography } from "@mui/material";
+import { theme } from "./theme";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ThemeProvider theme={theme}>
+      <CssBaseline />
+      <Context>
+        <AppBar position="static">
+          <Toolbar sx={{display: 'flex', justifyContent: 'center'}}>
+            <Typography sx={{ fontWeight: "bold" }} variant="h3">
+              Frontend Dev
+            </Typography>
+          </Toolbar>
+        </AppBar>
+        <div className="App" style={{ margin: "16px 10% 0 10%" }}>
+          <MainPage />
+        </div>
+      </Context>
+    </ThemeProvider>
   );
 }
 
