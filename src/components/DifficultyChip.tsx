@@ -1,11 +1,11 @@
-import { Chip, ChipProps } from '@mui/material';
+import { Chip } from '@mui/material';
 import React from 'react';
 
-interface DifficultyChip {
+interface DifficultyChipProp {
   label: string;
 }
 type color = "primary" | "warning" | "error" | "default" | "secondary" | "info" | "success" | undefined
-export const DifficultyChip: React.FC<DifficultyChip> = (props) => {
+export const DifficultyChip: React.FC<DifficultyChipProp> = (props) => {
   const {label} = props;
   const colors:{[key: string]: color } = {
     easy: 'primary', 
@@ -13,6 +13,6 @@ export const DifficultyChip: React.FC<DifficultyChip> = (props) => {
     hard: 'error'
   }
   return (
-    <Chip color={colors[label]} label={label}/>
+    <Chip size='small' color={colors[label]} label={label}/>
   )
 }

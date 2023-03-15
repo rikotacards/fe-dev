@@ -20,6 +20,7 @@ interface ProblemRowProps extends ProblemType {
   categoryName: string;
 }
 
+
 export const ProblemRow: React.FC<ProblemRowProps> = (props) => {
   const {
     questionPrompts,
@@ -69,9 +70,10 @@ export const ProblemRow: React.FC<ProblemRowProps> = (props) => {
         sx={{ width: "30%", border: `2px solid ${theme.palette.divider}` }}
         align="left"
       >
-        <Link underline="none" rel="noreferrer" target={"_blank"} href={url}>
+        <Link style={{pointerEvents:url.length  ?undefined: 'none'}} color={url.length ? 'primary': 'secondary'} underline="none" rel="noreferrer" target={"_blank"} href={url}>
           <Typography sx={{ fontWeight: "bold" }}>{name}</Typography>
         </Link>
+        {!url.length && <Chip size="small" label='Pending Example'/>}
       </TableCell>
       {hasQuestionPrompts && (
         <TableCell
